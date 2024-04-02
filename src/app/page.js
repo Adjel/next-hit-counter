@@ -21,13 +21,13 @@ writeFile(
 */
 
 function Home() {
-  const json = readFile(DATABASE_PATH);
-  const hits = JSON.parse(json);
-  writeFile(DATABASE_PATH, JSON.stringify({ hits: hits + 1 }));
+  let { hits } = JSON.parse(readFile(DATABASE_PATH));
+  hits += 1;
+  writeFile(DATABASE_PATH, JSON.stringify({ hits }));
   return (
     <main>
       <h1>Welcome!</h1>
-      <p>You are visitor number {hits.hits}.</p>
+      <p>You are visitor number {hits}.</p>
     </main>
   );
 }
